@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-md-3"> </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <p>User Registration Form</p>
+            </div>
+            <div class="card-body">
+
+                <form #userreg="ngForm">
+                    <label> Full Name : </label>
+                    <input type="text" [(ngModel)]="user.fullname" name="fullname" class="form-control" />
+                    <br />
+
+                    <label>Email Id:</label>
+                    <input type="email" [(ngModel)]="user.email" name="email" class="form-control" />
+                    <br />
+
+                    <label>Contact number:</label>
+                    <input type="email" [(ngModel)]="user.contact" name="contact" class="form-control" />
+                    <br />
+
+                    <label>Gender:</label>
+                    <input type="radio" [(ngModel)]="user.gender" name="gender" class="form-control" />
+                    <label for="gender">Male</label>&nbsp;&nbsp;||&nbsp;&nbsp;
+                    <label for="gender">Female</label>&nbsp;&nbsp;||&nbsp;&nbsp;
+                    <label for="gender">Others</label>&nbsp;&nbsp;||&nbsp;&nbsp;
+                    <br />
+
+                    <label>Email Id:</label>
+                    <input type="email" [(ngModel)]="user.email" name="contact" class="form-control" />
+                    <br />
+
+                    <label>Username : </label>
+                    <input type="text" [(ngModel)]="user.username" name="username" class="form-control" />
+                    <br />
+
+                    Password
+                    <input type="password" formControlName="password" class="form-control" />
+                    <br />
+                    <div>
+                        <input type="submit" value="Register" class="btn btn-success" (click)=" saveUser()" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a routerLink="/user">Existing user login here!</a>
+                    </div>
+                    <div>
+                        <!-- <p>{{msg}}</p> -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"> </div>
+</div>
