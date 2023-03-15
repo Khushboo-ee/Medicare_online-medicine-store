@@ -9,7 +9,11 @@
 
                 <form #userreg="ngForm">
                     <label> Full Name : </label>
-                    <input type="text" [(ngModel)]="user.fullname" name="fullname" class="form-control" />
+                    <input type="text" [(ngModel)]="user.fullname" name="fullname" class="form-control"
+                        #pername="ngModel" required />
+                    <div *ngIf="pername.touched && pername.invalid" class="alert alert-danger">
+                        <p *ngIf="pername.errors.required">Full Name is required</p>
+                    </div>
                     <br />
 
                     <label>Email Id:</label>
@@ -17,38 +21,80 @@
                     <br />
 
                     <label>Contact number:</label>
-                    <input type="email" [(ngModel)]="user.contact" name="contact" class="form-control" />
+                    <input type="email" [(ngModel)]="user.contact" name="contact" class="form-control"
+                        #contact="ngModel" required />
+                    <div *ngIf="contact.touched && contact.invalid" class="alert alert-danger">
+                        <p *ngIf="contact.errors.required">Contact number is required</p>
+                    </div>
                     <br />
 
-                    <label>Gender:</label>
-                    <input type="radio" [(ngModel)]="user.gender" name="gender" class="form-control" />
-                    <label for="gender">Male</label>&nbsp;&nbsp;||&nbsp;&nbsp;
-                    <label for="gender">Female</label>&nbsp;&nbsp;||&nbsp;&nbsp;
-                    <label for="gender">Others</label>&nbsp;&nbsp;||&nbsp;&nbsp;
+                    <label>Gender:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <input type="radio" [(ngModel)]="user.gender" value="M" name="gender" #rdogender="ngModel"
+                        required />
+                    Male&nbsp;&nbsp;||&nbsp;&nbsp;
+                    <input type="radio" [(ngModel)]="user.gender" value="F" name="gender" #rdogender="ngModel"
+                        required />
+                    Female &nbsp;&nbsp;||&nbsp;&nbsp;
+                    <input type="radio" [(ngModel)]="user.gender" value="others" name="gender" #rdogender="ngModel"
+                        required />
+                    Others <br />
+                    <div *ngIf="rdogender.touched && rdogender.invalid" class="alert alert-danger">
+                        <p *ngIf="rdogender.errors.required">Gender is required</p>
+                    </div>
                     <br />
 
-                    <label>Email Id:</label>
-                    <input type="email" [(ngModel)]="user.email" name="contact" class="form-control" />
+                    <label>Address : </label>
+                    <input type="text" [(ngModel)]="user.address" name="address" class="form-control" #addr="ngModel"
+                        required />
+                    <div *ngIf="addr.touched && addr.invalid" class="alert alert-danger">
+                        <p *ngIf="addr.errors.required">Address is required</p>
+                    </div>
+                    <br />
+
+                    <label>City : </label>
+                    <input type="text" [(ngModel)]="user.city" name="city" class="form-control" #cityinfo="ngModel"
+                        pattern="^[a-zA-Z]" required />
+                    <div *ngIf="cityinfo.touched && cityinfo.invalid" class="alert alert-danger">
+                        <p *ngIf="cityinfo.errors.required">City is required</p>
+                        <p *ngIf="cityinfo.errors.pattern">enter only alphabets</p>
+                    </div>
+                    <br />
+
+                    <label>Pincode : </label>
+                    <input type="text" [(ngModel)]="user.pincode" name="pincode" class="form-control" #pininfo="ngModel"
+                        minlength="6" maxlength="6" pattern="^[0-9]*$" required />
+                    <div *ngIf="pininfo.touched && pininfo.invalid" class="alert alert-danger">
+                        <p *ngIf="pininfo.errors.required">Pincode is required</p>
+                        <p *ngIf="pininfo.errors.minlength || pininfo.errors.maxlength">Enter a valid pincode with 6
+                            digits</p>
+                        <p *ngIf="pininfo.errors.pattern">Only Digits</p>
+                    </div>
                     <br />
 
                     <label>Username : </label>
-                    <input type="text" [(ngModel)]="user.username" name="username" class="form-control" />
+                    <input type="text" [(ngModel)]="user.username" name="username" class="form-control"
+                        #username="ngModel" minlength="5" pattern="^^[a-z0-9_-]$" required />
+                    <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
+                        <p *ngIf="username.errors.required">username is required</p>
+                        <p *ngIf="username.errors.minlength"> min 5 chars required</p>
+                        <p *ngIf="username.errors.pattern">enter a-z 0-9 or _- characters only</p>
+                    </div>
                     <br />
 
                     Password
-                    <input type="password" formControlName="password" class="form-control" />
+                    <input type="password" [(ngModel)]="user.password" name="password" class="form-control"
+                        #pwd="ngModel" required />
+                    <div *ngIf="pwd.touched && pwd.invalid" class="alert alert-danger">
+                        <p *ngIf="pwd.errors.required">Password is required</p>
+                    </div>
                     <br />
-                    <div>
-                        <input type="submit" value="Register" class="btn btn-success" (click)=" saveUser()" />
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a routerLink="/user">Existing user login here!</a>
-                    </div>
-                    <div>
-                        <!-- <p>{{msg}}</p> -->
-                    </div>
+
+                    <input type="submit" value="Register" class="btn btn-primary" (click)=" saveUser()" />
+
                 </form>
+
             </div>
         </div>
+        <div class="col-md-3"> </div>
     </div>
-    <div class="col-md-3"> </div>
-</div>

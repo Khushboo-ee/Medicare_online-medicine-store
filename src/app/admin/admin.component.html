@@ -1,28 +1,37 @@
-<!-- <div class="row container p-5">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                <p>Admin Login</p>
-            </div>
-            <div class="card-body">
-                <form [formGroup]="adminloginForm" (ngSubmit)="proceedLogin()">
-                    Username:
-                    <input type="text" formControlName="username" class="form-control" />
-                    <br />
-                    Password:
-                    <input type="password" formControlName="password" class="form-control" />
-                    <br />
-                    <div>
-                        <input type="submit" value="Login" class="btn btn-success" />
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-center">
+                    <img class="img-fluid" style="width: 100px;" src="/assets/admin-icon1.png" alt="admin icon" />
+                </div>
+                <!-- <a routerLink mat-raised-button color="accent"></a> -->
+                <h1 class="text-center">Login Here!</h1>
 
+                <!-- creating form -->
+
+                <form action="">
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Username</mat-label>
+                        <input type="text" matInput />
+
+                    </mat-form-field>
+
+                    
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput />
+
+                    </mat-form-field>
+                    <div class="container text-center">
+                        <button type="submit" mat-raised-button color="accent">Login</button>&nbsp;&nbsp;
+                        <button type="reset" mat-raised-button color="primary">Reset</button>
                     </div>
-                    <div>
-                        <p>{{msg}}</p>
-                    </div>
+
                 </form>
+
             </div>
         </div>
-
     </div>
-</div> -->
+</div>

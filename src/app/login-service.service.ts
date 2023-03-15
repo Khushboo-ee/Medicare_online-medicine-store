@@ -29,7 +29,7 @@ export class LoginServiceService {
     
   //users
   //get list of all users
-  getAllUsers(){
+  getAllUsers():Observable<User[]>{
     return this.httpclient.get<User[]>(`${this.getUser}`);
   }
 
@@ -38,10 +38,11 @@ export class LoginServiceService {
     return this.httpclient.post(`${this.adduser}`,user);
   }
 
-  //get user info by id
+ // get user info by id
   getUserInfoById(id:number):Observable<User>{
     return this.httpclient.get<User>(`${this.userByID}/${id}`);
   }
+  
 
   //delete user info using id
   deleteUserById(id:number):Observable<Object>{
