@@ -6,27 +6,26 @@
                     <img class="img-fluid" style="width: 100px;" src="/assets/admin-icon1.png" alt="admin icon" />
                 </div>
                 <!-- <a routerLink mat-raised-button color="accent"></a> -->
-                <h1 class="text-center">Login Here!</h1>
+                <h1 class="text-center">Admin Login </h1>
 
                 <!-- creating form -->
 
-                <form action="">
+                <form (ngSubmit)="onSubmit()">
 
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Username</mat-label>
-                        <input type="text" matInput />
-
+                        <input [(ngModel)]="credentials.username" name="username" required type="text" matInput />
                     </mat-form-field>
 
-                    
+
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input type="password" matInput />
+                        <input [(ngModel)]="credentials.password" name="password" required type="password" matInput />
 
                     </mat-form-field>
                     <div class="container text-center">
-                        <button type="submit" mat-raised-button color="accent">Login</button>&nbsp;&nbsp;
-                        <button type="reset" mat-raised-button color="primary">Reset</button>
+                        <button type="submit" mat-raised-button color="accent">Login</button>
+                        <button style="margin-left: 20px;" type="reset" mat-raised-button color="primary">Reset</button>
                     </div>
 
                 </form>

@@ -9,6 +9,8 @@ import { User } from './user';
 })
 export class LoginServiceService {
 
+  url ="http://localhost:8080";
+
   // private ApiProductUrl = "http://localhost:8080/medicare/products" ;
   // private ApiAdminUrl = "http://localhost:8080/medicare";
   // private ApiUserUrl = "http://localhost:8080/medicare/user";
@@ -57,6 +59,47 @@ export class LoginServiceService {
   //get user info by id
   updateAdminById(id:number, admin:Admin):Observable<Object>{
     return this.httpclient.put(`${this.updateAdmin}/${id}`, admin);
+  }
+
+  //--------------------------------------------------------------------------------------
+
+  //for calling server
+generateToken(credentials:any){
+  //generate token
+  return this.httpclient.post(`${this.url}/token`,credentials);
+
+}
+
+  //for admin login
+  loginUser(token: any)
+  {
+    localStorage.setItem("token",token);
+    return true;
+  }
+
+  //checking if admin is still loggedin
+  isLoggedin()
+  {
+    let token = localStorage.getItem("token");
+
+    if(token==undefined || token==null || token=="")
+    {
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+
+  //for logging out admin
+  logout(){
+    localStorage.removeItem('token');
+    return true;
+  }
+
+  //for getting token
+  getToken(){
+    return localStorage.getItem("token");
   }
 
 }
